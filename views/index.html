@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<title>Contact List</title>
+	
+</head>
+<body ng-app="contactlist">
+	<div  ng-controller="apicontroller" class="container">
+		<h1>Contact List</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Gender</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>Action</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="contact.email"></td>
+					<td><input class="form-control" ng-model="contact.firstname"></td>
+					<td><input class="form-control" ng-model="contact.lastname"></td>
+					<td>
+						<select name="gender" id="gender" class="form-control" ng-model='contact.gender'>
+							<option value="male">male</option>
+							<option value="female">female</option>
+						</select>
+					</td>
+					<td><input class="form-control" ng-model="contact.phone"></td>
+					<td><input class="form-control" ng-model="contact.addr"></td>
+					<td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
+					<td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+
+				</tr>
+				<tr ng-repeat="contact in contactList">
+					<td> {{contact.email}} </td>
+					<td> {{contact.firstname}} </td>
+					<td> {{contact.lastname}} </td>
+					<td> {{contact.gender}} </td>
+					<td> {{contact.phone}} </td>
+					<td> {{contact.addr}} </td>
+					<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+	<script src="controller.js"></script>
+</body>
+</html>
